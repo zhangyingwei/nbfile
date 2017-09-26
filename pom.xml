@@ -11,7 +11,7 @@
         <version>7</version>
     </parent>
 
-    <groupId>com.zhangyingwei.nbfile</groupId>
+    <groupId>com.github.zhangyingwei</groupId>
     <artifactId>nbfile</artifactId>
     <version>1.0-0</version>
 
