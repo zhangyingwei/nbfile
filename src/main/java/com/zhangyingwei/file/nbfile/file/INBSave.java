@@ -1,4 +1,4 @@
-package com.zhangyingwei.file.nbfile;
+package com.zhangyingwei.file.nbfile.file;
 
 import java.io.IOException;
 

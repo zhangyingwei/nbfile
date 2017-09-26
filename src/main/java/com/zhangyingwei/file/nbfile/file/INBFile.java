@@ -1,10 +1,8 @@
 package com.zhangyingwei.file.nbfile.file;
 
-import com.zhangyingwei.file.nbfile.INBSave;
-import com.zhangyingwei.file.nbfile.csv.INBCsvFile;
+import com.zhangyingwei.file.nbfile.file.csv.INBCsvFile;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -15,4 +13,6 @@ public interface INBFile extends INBSave {
     List<String> lines() throws FileNotFoundException;
     INBCsvFile toNBCsvFile() throws FileNotFoundException;
     INBCsvFile toNBCsvFile(String spliter) throws FileNotFoundException;
+
+    byte[] getSource();
 }

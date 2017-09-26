@@ -1,8 +1,8 @@
 package com.zhangyingwei.file.nbfile.file;
 
-import com.zhangyingwei.file.nbfile.csv.INBCsvFile;
-import com.zhangyingwei.file.nbfile.csv.NBCsvFile;
-import com.zhangyingwei.file.nbfile.net.NetUtils;
+import com.zhangyingwei.file.nbfile.file.csv.INBCsvFile;
+import com.zhangyingwei.file.nbfile.file.csv.NBCsvFile;
+import com.zhangyingwei.file.nbfile.utils.IOUtils;
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
@@ -16,14 +16,17 @@ public class NBFile implements INBFile {
     private byte[] bytes;
     private List<String> lines;
 
-    public NBFile(String path) throws FileNotFoundException {
+    public NBFile(String path) throws IOException {
         File file = new File(path);
-        InputStreamReader reader = new InputStreamReader(new FileInputStream(file));
+        this.bytes = IOUtils.readBytes(file);
+    }
+
+    public NBFile(File file) throws IOException {
+        this.bytes = IOUtils.readBytes(file);
     }
 
     public NBFile(URL url) throws IOException {
-        this.bytes = NetUtils.readBytes(url);
-
+        this.bytes = IOUtils.readBytes(url);
     }
 
     public NBFile(NBCsvFile nbCsvFile) {
@@ -32,7 +35,7 @@ public class NBFile implements INBFile {
         this.lines = new ArrayList<String>();
         lines.add(columns);
         lines.addAll(lineDatas);
-        this.file = nbCsvFile.getSourceFile();
+        this.bytes = nbCsvFile.getSource();
     }
 
     @Override
@@ -65,7 +68,8 @@ public class NBFile implements INBFile {
         writer.close();
     }
 
-    public File getSourceFile() {
-        return file;
+    @Override
+    public byte[] getSource() {
+        return bytes;
     }
 }
