@@ -2,6 +2,9 @@ package com.zhangyingwei.file.nbfile.file.csv;
 
 import com.zhangyingwei.file.nbfile.file.INBSave;
 import com.zhangyingwei.file.nbfile.file.INBFile;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -82,7 +85,7 @@ public interface INBCsvFile extends INBSave {
      * @param spliter
      * @return
      */
-    INBCsvFile setSpliter(String spliter);
+    INBCsvFile setSpliter(String spliter) throws FileNotFoundException, IOException;
 
     /**
      * 获取数据的二进制资源

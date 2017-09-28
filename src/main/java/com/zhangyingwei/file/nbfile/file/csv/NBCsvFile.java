@@ -131,8 +131,9 @@ public class NBCsvFile implements INBCsvFile {
     }
 
     @Override
-    public INBCsvFile setSpliter(String spliter) {
+    public INBCsvFile setSpliter(String spliter) throws IOException {
         this.spliter = spliter;
+        this.init(this.nbFile);
         return this;
     }
 
